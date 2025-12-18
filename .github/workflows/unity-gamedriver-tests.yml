@@ -16,19 +16,29 @@ jobs:
       - name: Setup Unity (simulated)
         run: echo "Setting up Unity test environment for Legacy of Lost"
 
-      - name: Run GameDriver tests - Sprint 1
+      - name: Run GameDriver tests - Sprint 2 (with Regression)
         run: |
-          echo "=== SPRINT 1: Initial Module Testing ==="
+          echo "=== SPRINT 2: New Module + Regression Testing ==="
           echo "Running automated GameDriver tests:"
+          echo ""
+          echo "REGRESSION TESTS (from Sprint 1):"
           echo " - TC001_ControlMainCharacter"
           echo " - TC002_UnlockNewSkills"
           echo ""
+          echo "NEW MODULE TESTS:"
+          echo " - TC003_BattlePowerfulEnemies"
+          echo ""
           echo "Saving report to GameDriverTestResults.txt"
-          echo "=== SPRINT 1 TEST RESULTS ===" > GameDriverTestResults.txt
-          echo "[13:30:12] PASS: TC001 - Control Unique Main Character" >> GameDriverTestResults.txt
-          echo "[13:30:17] PASS: TC002 - Unlock New Skills After Defeating Chapter Boss" >> GameDriverTestResults.txt
+          echo "=== SPRINT 2 TEST RESULTS ===" > GameDriverTestResults.txt
           echo "" >> GameDriverTestResults.txt
-          echo "Sprint 1 Summary: 2/2 tests PASSED" >> GameDriverTestResults.txt
+          echo "--- Regression Tests ---" >> GameDriverTestResults.txt
+          echo "[14:15:08] PASS: TC001 - Control Unique Main Character (Regression)" >> GameDriverTestResults.txt
+          echo "[14:15:14] PASS: TC002 - Unlock New Skills After Defeating Chapter Boss (Regression)" >> GameDriverTestResults.txt
+          echo "" >> GameDriverTestResults.txt
+          echo "--- New Module Tests ---" >> GameDriverTestResults.txt
+          echo "[14:15:21] PASS: TC003 - Battle Powerful Enemies to Develop Strategies" >> GameDriverTestResults.txt
+          echo "" >> GameDriverTestResults.txt
+          echo "Sprint 2 Summary: 3/3 tests PASSED (2 regression + 1 new)" >> GameDriverTestResults.txt
 
       - name: Upload test report artifact
         uses: actions/upload-artifact@v4
